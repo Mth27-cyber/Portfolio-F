@@ -1,0 +1,860 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.Navbar{
+ display:flex;
+ justify-content:space-evenly;
+ align-items : center;
+ background-color: #080808;
+   background-image: 
+    radial-gradient(circle at 15% 15%, rgba(0, 210, 255, 0.12) 0%, transparent 45%),
+    radial-gradient(circle at 85% 20%, rgba(108, 92, 231, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 50% 80%, rgba(0, 150, 255, 0.08) 0%, transparent 60%);
+ box-shadow:0 2px 10px rgba(0,0,0,0.1);
+ position: sticky;
+  border-radius: 50px;
+  min-height: 50px;
+  padding: 0.1rem 0.1rem;
+  max-width: 800px;
+ top:0;
+ z-index:100;
+ margin: 20px auto;
+ flex-wrap: wrap;
+}
+.logo{
+    font-size: 1.1rem;
+    color: #ffffff;
+    padding: 0 1rem;
+}
+
+/* Shared nav-button look. .b1–.b4 were duplicated 4x with a color bug
+   (color: #fff then immediately overridden to black); consolidated here.
+   .b5/.b6 (Projects / Coding) added into the same shared rule. */
+.b1, .b2, .b3, .b4, .b5, .b6 {
+  position: relative;
+  padding: 0.75rem 1.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: 1px solid #05070f;
+  border-radius: 8px;
+  background-color: transparent;
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+.b1:hover, .b2:hover, .b3:hover, .b4:hover, .b5:hover, .b6:hover {
+   color:#ffffff;
+   transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(108, 92, 231, 0.4), 0 0 30px rgba(0, 210, 255, 0.3);
+}
+.b1::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 10%;
+  width: 80%;
+  height: 3px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #00d2ff 0%, #a259ff 100%);
+}
+
+.Explore{
+display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 16px 36px;
+  border-radius: 9999px;
+  border: none;
+  background: linear-gradient(135deg, #00d2ff 0%, #6c5ce7 100%);
+ font-weight: bold;
+  color:white;
+  cursor: pointer;
+}
+.Contact{
+    gap: 12px;
+  padding: 16px 36px;
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  color:#ffffff;
+  font-weight: bold;
+  background: transparent;
+  cursor: pointer;
+}
+.Contact:hover{
+    color:aqua;
+    border-color: #00d2ff;
+    background-color:transparent;
+    box-shadow: 0 0 20px rgba(0,255,255,0.6);
+}
+
+/* Hero "About" section (renamed the stray reuse of .About on the <p> to .about-text) */
+.About{
+    color: #C0C0C0;
+    text-wrap: balance;
+    font-family: 'Syne', sans-serif;
+    letter-spacing: -0.02em;
+    font-size: 1.1rem;
+    padding: 40px 60px;
+    overflow: hidden; /* contain the floated photo */
+}
+.about-text {
+  color: #C0C0C0;
+  font-family: 'Syne', sans-serif;
+  letter-spacing: -0.02em;
+  font-size: 1.1rem;
+  max-width: 600px;
+}
+
+.bg{
+   background-color: #05070f;
+   background-image: 
+    radial-gradient(circle at 15% 15%, rgba(22, 91, 106, 0.552) 0%, transparent 45%),
+    radial-gradient(circle at 85% 20%, rgba(96, 85, 183, 0.534) 0%, transparent 50%),
+    radial-gradient(circle at 50% 80%, rgba(129, 186, 226, 0.08) 0%, transparent 60%);
+  background-attachment: fixed;
+}
+.Name1{
+   color: #e2e8f0;
+    font-size: clamp(3.5rem, 8vw, 7rem);
+    line-height: 0.9;   
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+.text{
+    margin-top: 0;         
+  padding-top: 0;
+  color:aliceblue;
+}
+.Welcome{
+  display: inline-block;
+  background: linear-gradient(90deg, #22d3ee, #818cf8, #c084fc);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* Profile photo — .photo (the anchor/frame) and .hero-image (the <img>) were
+   both floating + both sizing independently, which fought each other.
+   .photo now owns layout, .hero-image just fills it. */
+.photo{
+  width: 260px;
+  height: 260px;
+  float: right;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  border: 5px solid transparent;
+  background: linear-gradient(#0b0b12, #0b0b12) padding-box,
+    linear-gradient(135deg, #00d2ff 0%, #6c5ce7 100%) border-box;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  overflow: hidden;
+}
+.photo:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 20px rgba(108, 92, 231, 0.5), 0 0 30px rgba(0, 210, 255, 0.4);
+}
+.hero-image{
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.social-links {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 0 30px;
+}
+
+.circle-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 1.2rem;
+  text-decoration: none;
+  border: 2px solid transparent;
+  background: linear-gradient(#0b0b12, #0b0b12) padding-box,
+    linear-gradient(135deg, #00d2ff 0%, #6c5ce7 100%) border-box;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.circle-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 20px rgba(108, 92, 231, 0.5), 0 0 30px rgba(0, 210, 255, 0.4);
+}
+.circle-btn:active {
+  transform: translateY(0);
+}
+
+/* About-me section (renamed from a second, colliding use of .About) */
+.About-section {
+  padding: 60px 20px 20px;
+}
+.l1{
+  margin-bottom: 40px;
+  text-align:center ;
+ display: inline-block;
+  background: linear-gradient(90deg, #22d3ee, #818cf8, #c084fc);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+.a{
+  color: white;
+   text-align:center ;
+}
+.b{
+  color: white;
+  text-align: center;
+}
+.c{
+  color: #c9d1d9;
+  font-family: 'Syne', sans-serif;
+  line-height: 1.6;
+  text-wrap: balance;
+  text-align:left;
+  letter-spacing: -0.02em;
+  max-width: 550px;
+  font-size: 1.1rem;
+}
+.c strong {
+  color: #ffffff;
+  font-weight: 600;
+}
+.d{
+  display: flex;
+  justify-content: center;
+}
+
+/* Card that holds the bio paragraph (renamed from the collided .Skills class) */
+.about-card{
+  width: 100%;
+  max-width: 600px;
+  padding: 28px;
+  background: rgba(10, 14, 23, 0.85); 
+  border: 1px solid rgba(13, 139, 139, 0.3); 
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  font-family: system-ui, -apple-system, sans-serif;
+  color: #ffffff;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.about-card:hover{
+ transform: translateY(-3px);
+  box-shadow: 0 0 20px rgba(108, 92, 231, 0.5), 0 0 30px rgba(0, 210, 255, 0.4);
+}
+
+.e{
+  margin-top: 120px;
+  color: white;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  text-align: center;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+/* Skills progress bars (renamed container from the collided .Skills class) */
+.skills-bars {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+.skill-name {
+  color: #a0aec0;
+  display: flex;
+  padding: 1rem 0 0.25rem;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 500;
+}
+.skill-percentage {
+  color: #a0aec0;
+  font-weight: 500;
+}
+
+.progress-bar-track {
+  width: 100%;
+  height: 4px;
+  background-color: rgba(255, 255, 255, 0.08);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-top: 4px;
+}
+/* NOTE: the old rule here forced every bar to width:60% with !important,
+   silently overriding every bar's real percentage. Removed. */
+.progress-bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #ff416c 0%, #ff4b2b 100%);
+  transition: width 0.4s ease;
+}
+.progress-bar-fill2 {
+  height: 100%;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #0d85e0, #1e00ff);
+  transition: width 0.5s ease-in-out;
+}
+.progress-bar-fill3 {
+  height: 100%;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #e0d20d, #ff0202);
+  transition: width 1s ease-in-out;
+}
+
+.Frontend{
+  display: block;
+  padding: 1.5rem 0 0.5rem;
+  color:white;
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.Tech{
+   margin-top: 80px;
+   color: white;
+   gap: 1.5rem;
+  padding:1.5rem;
+  text-align: center;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+.sk{
+   padding: 0.75rem 1.5rem; 
+  font-size: 1.1rem;
+  font-weight: 400;
+  border: 1px solid #0ccaff;
+  border-radius: 8px;
+  background-color: transparent;
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+.sk:hover {
+  box-shadow: 0 0 15px rgba(12, 202, 255, 0.5);
+  transform: translateY(-2px);
+}
+.ski{
+  display:flex;
+  flex-wrap: wrap;
+ justify-content:center;
+ gap: 1rem;
+ align-items : center;
+ margin-top: 40px;
+}
+.Projects{
+     margin-top:100px ;
+   color: white;
+   gap: 1.5rem;
+  padding:1.5rem;
+  text-align: center;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.contact-section {
+  min-height: 200px;
+}
+
+/* Journey / Timeline Styling */
+.journey-section {
+  padding: 80px 20px;
+  background-color: #030712;
+  color: #f3f4f6;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+
+.section-subtitle {
+  text-align: center;
+  color: #9ca3af;
+  margin-bottom: 50px;
+  font-size: 1rem;
+}
+
+.timeline {
+  position: relative;
+  border-left: 2px solid rgba(255, 255, 255, 0.1);
+  margin-left: 20px;
+  padding-left: 30px;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: -37px;
+  top: 6px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #3b82f6;
+  box-shadow: 0 0 10px #3b82f6;
+  border: 2px solid #030712;
+}
+
+.timeline-content {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 24px;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.timeline-content:hover {
+  transform: translateY(-3px);
+  border-color: rgba(59, 130, 246, 0.4);
+}
+
+.timeline-tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 4px 10px;
+  border-radius: 6px;
+  background-color: rgba(255, 255, 255, 0.06);
+  color: #93c5fd;
+  margin-bottom: 12px;
+}
+
+.timeline-tag.current {
+  background-color: rgba(59, 130, 246, 0.2);
+  color: #60a5fa;
+  border: 1px solid rgba(59, 130, 246, 0.4);
+}
+
+.timeline-content h3 {
+  font-size: 1.25rem;
+  margin: 0 0 4px 0;
+  color: #ffffff;
+}
+
+.institution {
+  font-size: 0.9rem;
+  color: #9ca3af;
+  margin-bottom: 16px;
+}
+
+.institution strong {
+  color: #10b981;
+}
+
+.milestones-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.milestones-list li {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #d1d5db;
+}
+
+.milestones-list li:last-child {
+  margin-bottom: 0;
+}
+
+.milestones-list li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #3b82f6;
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.Journey{
+    margin-top: 100px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .About {
+    padding: 30px 20px;
+    text-align: center;
+  }
+  .photo {
+    float: none;
+    margin: 0 auto 20px;
+  }
+  .text {
+    margin-left: 0;
+  }
+  .Navbar {
+    border-radius: 20px;
+    padding: 0.75rem;
+  }
+  .b1, .b2, .b3, .b4, .b5, .b6 {
+    padding: 0.5rem 0.9rem;
+    font-size: 0.95rem;
+  }
+}
+
+/* ===========================================================
+   Projects section — cards styled like code-editor windows,
+   matching the site's ">MG<" / terminal identity.
+   =========================================================== */
+.projects-section,
+.competitive-section,
+.certifications-section {
+  padding: 1.5rem 1.5rem 0;
+  text-align: center;
+}
+.section-subtitle {
+  color: #9ca3af;
+  margin: -10px 0 40px;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  background: rgba(10, 14, 23, 0.85);
+  border: 1px solid rgba(13, 139, 139, 0.3);
+  border-radius: 16px;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 20px rgba(108, 92, 231, 0.4), 0 0 30px rgba(0, 210, 255, 0.25);
+  border-color: rgba(0, 210, 255, 0.4);
+}
+
+.editor-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.04);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+.dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+.dot.red { background: #ff5f56; }
+.dot.yellow { background: #ffbd2e; }
+.dot.green { background: #27c93f; }
+.editor-filename {
+  margin-left: 10px;
+  font-size: 0.8rem;
+  color: #9ca3af;
+  font-family: 'Syne', sans-serif;
+}
+
+.project-body { padding: 22px; flex: 1; }
+.project-emoji { font-size: 1.8rem; display: block; margin-bottom: 10px; }
+.project-body h3 {
+  margin: 0 0 8px;
+  color: #ffffff;
+  font-family: 'Syne', sans-serif;
+}
+.project-body p {
+  color: #c9d1d9;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin: 0 0 14px;
+}
+.project-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.project-tags span {
+  font-size: 0.72rem;
+  padding: 3px 10px;
+  border-radius: 9999px;
+  background: rgba(108, 92, 231, 0.15);
+  color: #93c5fd;
+  border: 1px solid rgba(108, 92, 231, 0.3);
+}
+.project-cta {
+  display: block;
+  padding: 14px 22px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  color: #00d2ff;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+/* ===========================================================
+   Competitive programming section
+   =========================================================== */
+.cp-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+.cp-card {
+  background: #0b0e14;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 18px;
+  overflow: hidden;
+  text-align: left;
+  padding: 26px 26px 22px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.cp-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 20px rgba(108, 92, 231, 0.35), 0 0 30px rgba(0, 210, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.14);
+}
+
+.cp-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 26px;
+}
+.cp-card-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #ffffff;
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 1.15rem;
+}
+.lc-title i { color: #ff8a65; }
+.cf-title i { color: #5b8def; }
+.cp-handle-badge {
+  background: rgba(255, 255, 255, 0.06);
+  color: #9ca3af;
+  font-size: 0.78rem;
+  padding: 5px 12px;
+  border-radius: 9999px;
+  white-space: nowrap;
+}
+
+/* --- LeetCode donut --- */
+.lc-body {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  margin-bottom: 22px;
+}
+.donut {
+  position: relative;
+  width: 128px;
+  height: 128px;
+  min-width: 128px;
+  border-radius: 50%;
+  background: conic-gradient(
+    #2dd4bf 0% var(--easy-pct, 29%),
+    #f5a623 var(--easy-pct, 29%) var(--medium-pct, 85%),
+    #f0326b var(--medium-pct, 85%) 100%
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.donut-hole {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  background: #0b0e14;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.donut-total { color: #ffffff; font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.6rem; line-height: 1.1; }
+.donut-label { color: #6b7280; font-size: 0.75rem; }
+
+.stat-list, .metric-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.stat-list li, .metric-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.95rem;
+}
+.stat-name, .metric-name { color: #9ca3af; flex: 1; }
+.stat-value { color: #ffffff; font-weight: 700; }
+.metric-value { font-weight: 700; }
+
+.dot { width: 9px; height: 9px; border-radius: 50%; flex: none; }
+.dot-easy { background: #2dd4bf; }
+.dot-medium { background: #f5a623; }
+.dot-hard { background: #f0326b; }
+.dot-rating { background: #34d399; }
+.dot-active { background: #5b8def; }
+.dot-streak { background: #f5a623; }
+
+/* --- Codeforces metrics --- */
+.cf-body { margin-bottom: 22px; }
+#cfRank { color: #34d399; }
+#cfActiveDays { color: #5b8def; }
+#cfStreak { color: #f5a623; }
+
+.dev-board-link {
+  display: inline-block;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+.lc-link { color: #f5a623; }
+.cf-link { color: #5b8def; }
+.dev-board-link:hover { text-decoration: underline; }
+
+.cp-note {
+  color: #6b7280;
+  font-size: 0.85rem;
+  margin-top: 24px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.cp-note code {
+  background: rgba(255, 255, 255, 0.06);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+@media (max-width: 420px) {
+  .lc-body { flex-direction: column; }
+  .stat-list { width: 100%; }
+}
+
+/* ===========================================================
+   Certifications section
+   =========================================================== */
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 22px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.cert-card {
+  background: rgba(10, 14, 23, 0.85);
+  border: 1px solid rgba(13, 139, 139, 0.3);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.cert-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 20px rgba(108, 92, 231, 0.4), 0 0 30px rgba(0, 210, 255, 0.25);
+}
+.cert-thumb {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background: rgba(255, 255, 255, 0.04);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.cert-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.cert-info { padding: 16px; text-align: left; }
+.cert-info h4 { margin: 0 0 4px; color: #ffffff; font-family: 'Syne', sans-serif; font-size: 1rem; }
+.cert-info p { margin: 0; color: #9ca3af; font-size: 0.85rem; }
+
+/* ===========================================================
+   Contact section
+   =========================================================== */
+.contact-section {
+  padding: 1.5rem 1.5rem 3rem;
+  text-align: center;
+}
+.contact-form {
+  max-width: 560px;
+  margin: 0 auto;
+  text-align: left;
+  background: rgba(10, 14, 23, 0.85);
+  border: 1px solid rgba(13, 139, 139, 0.3);
+  border-radius: 16px;
+  padding: 32px;
+}
+.form-row { margin-bottom: 18px; display: flex; flex-direction: column; gap: 6px; }
+.form-row label {
+  color: #93c5fd;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.form-row input,
+.form-row textarea {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  padding: 12px 14px;
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  resize: vertical;
+}
+.form-row input:focus,
+.form-row textarea:focus {
+  outline: none;
+  border-color: #00d2ff;
+  box-shadow: 0 0 0 3px rgba(0, 210, 255, 0.15);
+}
+.contact-form .Explore { width: 100%; margin-top: 6px; }
+.form-note { margin: 12px 0 0; font-size: 0.85rem; color: #34d399; text-align: center; min-height: 1.2em; }
+
+/* ===========================================================
+   Footer
+   =========================================================== */
+.site-footer {
+  text-align: center;
+  padding: 30px 20px 40px;
+  color: #6b7280;
+  font-size: 0.85rem;
+  font-family: system-ui, -apple-system, sans-serif;
+}
