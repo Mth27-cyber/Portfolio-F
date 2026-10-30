@@ -2,6 +2,11 @@
 // Example: <button class="b2" data-target="about">About</button>
 // scrolls to <div id="about">.
 
+// ---- SITE CONFIG: set these once ----
+const EMAIL = 'your-email@example.com';
+const LINKEDIN_URL = '';
+// -------------------------------------
+
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('[data-target]').forEach((el) => {
     el.addEventListener('click', () => {
@@ -15,6 +20,9 @@ document.addEventListener('DOMContentLoaded', () => {
   loadLeetCodeStats();
   loadCodeforcesStats();
   setupContactForm();
+  setupContactLinks();
+  setupNavHighlight();
+  setupReveal();
 });
 
 // =================================================================
@@ -39,12 +47,12 @@ async function loadLeetCodeStats() {
   if (profileLink) profileLink.href = `https://leetcode.com/${LEETCODE_USERNAME}`;
 
   if (!LEETCODE_USERNAME || LEETCODE_USERNAME === 'your-leetcode-username') {
-    totalEl.textContent = '--';
+    showLeetCodeFallback();
     return;
   }
 
   try {
-    const res = await fetch(`https://alfa-leetcode-api.onrender.com/${LEETCODE_USERNAME}/solved`);
+    const res = await fetch(`https://alfa-leetcode-api.onrender.com/${LEETCODE_USERNAME}/solved`, { signal: AbortSignal.timeout(8000) });
     const data = await res.json();
     if (!data || typeof data.solvedProblem !== 'number') throw new Error('No data');
 
@@ -64,7 +72,7 @@ async function loadLeetCodeStats() {
     mediumEl.textContent = medium;
     hardEl.textContent = hard;
   } catch (err) {
-    totalEl.textContent = '—';
+    showLeetCodeFallback();
   }
 }
 
@@ -103,9 +111,7 @@ async function loadCodeforcesStats() {
   if (profileLink) profileLink.href = `https://codeforces.com/profile/${CODEFORCES_HANDLE}`;
 
   if (!CODEFORCES_HANDLE || CODEFORCES_HANDLE === 'your-codeforces-handle') {
-    rankEl.textContent = '--';
-    activeDaysEl.textContent = '--';
-    streakEl.textContent = '--';
+    hideCodeforcesCard();
     return;
   }
 
@@ -132,9 +138,7 @@ async function loadCodeforcesStats() {
     activeDaysEl.textContent = `${dayKeys.size} Days`;
     streakEl.textContent = `${currentStreak(dayKeys)} Days`;
   } catch (err) {
-    rankEl.textContent = '—';
-    activeDaysEl.textContent = '—';
-    streakEl.textContent = '—';
+    hideCodeforcesCard();
   }
 }
 
@@ -201,4 +205,69 @@ function setupContactForm() {
       submitBtn.textContent = originalLabel;
     }
   });
+}
+
+// ---------------------------------------------------------------
+// Graceful fallbacks, so recruiters never see "--" placeholders.
+// ---------------------------------------------------------------
+function showLeetCodeFallback() {
+  const card = document.querySelector('.lc-card');
+  if (!card || card.classList.contains('is-static')) return;
+  card.classList.add('is-static');
+  if (LEETCODE_USERNAME === 'your-leetcode-username') {
+    ['lcHandleBadge', 'lcProfileLink'].forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) el.hidden = true;
+    });
+  }
+  document.getElementById('lcTotal').textContent = '350+';
+  const note = document.createElement('p');
+  note.className = 'static-note';
+  note.textContent = 'DSA problems solved in Java · 50-day and 100-day streak badges';
+  card.querySelector('.lc-body').appendChild(note);
+}
+
+function hideCodeforcesCard() {
+  const card = document.querySelector('.cf-card');
+  if (card) card.hidden = true;
+}
+
+function setupContactLinks() {
+  const hasEmail = EMAIL && !EMAIL.includes('example.com');
+  const emailBtn = document.getElementById('emailLink');
+  const direct = document.getElementById('directEmail');
+  const emailText = document.getElementById('emailText');
+  const form = document.getElementById('contactForm');
+  if (hasEmail) {
+    emailBtn.href = `mailto:${EMAIL}`;
+    emailText.href = `mailto:${EMAIL}`;
+    emailText.textContent = EMAIL;
+    if (form) form.action = `https://formsubmit.co/ajax/${EMAIL}`;
+  } else {
+    if (emailBtn) emailBtn.hidden = true;
+    if (direct) direct.hidden = true;
+  }
+  const li = document.getElementById('linkedinLink');
+  if (LINKEDIN_URL) li.href = LINKEDIN_URL; else if (li) li.hidden = true;
+}
+
+// Highlights the nav button for the section currently on screen.
+function setupNavHighlight() {
+  const buttons = [...document.querySelectorAll('.Navbar [data-target]')];
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((en) => {
+      if (!en.isIntersecting) return;
+      buttons.forEach((b) => b.classList.toggle('is-active', b.dataset.target === en.target.id));
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+  buttons.forEach((b) => { const t = document.getElementById(b.dataset.target); if (t) io.observe(t); });
+}
+
+// Fade-up on scroll (class is added by JS, so no-JS visitors still see everything).
+function setupReveal() {
+  const els = document.querySelectorAll('.project-card, .cp-card, .cert-card, .timeline-content, .about-card, .skill-group');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((en) => { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+  }, { threshold: 0.12 });
+  els.forEach((el) => { el.classList.add('reveal'); io.observe(el); });
 }
