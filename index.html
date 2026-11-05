@@ -3,367 +3,566 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manthan Goel | Software Engineering Intern Candidate</title>
-    <meta name="description" content="Manthan Goel, B.Tech IT student at MAIT. Full-stack and AI projects (FastAPI, React, Java), 350+ DSA problems solved. Open to internships.">
-    <meta name="theme-color" content="#05070f">
-    <meta property="og:title" content="Manthan Goel | Portfolio">
-    <meta property="og:description" content="Full-stack and AI projects, competitive programming, and hackathon work. Open to internships.">
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%9A%80%3C/text%3E%3C/svg%3E">
-
-    <!-- Fonts used in style.css (Syne + Inter) -->
+    <meta name="description" content="Manthan Goel - Creative App & Web Developer Portfolio. Undergrad at MAIT Delhi.">
+    <title>Manthan Goel | Creative App & Web Developer</title>
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Syne:wght@400;600;700&display=swap" rel="stylesheet">
-
-    <!-- Font Awesome, used for the GitHub / LinkedIn icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Stylesheet -->
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg">
-    <a class="skip-link" href="#about">Skip to content</a>
+<body>
+    <!-- Custom Cursor Custom Elements -->
+    <div class="custom-cursor"></div>
+    <div class="custom-cursor-dot"></div>
+    <canvas id="particle-canvas"></canvas>
 
-    <nav class="Navbar" aria-label="Primary">
-        <h6 class="logo"><b>&gt;MG&lt;</b></h6>
-        <button class="b1" data-target="home">Home</button>
-        <button class="b2" data-target="about">About</button>
-        <button class="b3" data-target="skills">Skills</button>
-        <button class="b5" data-target="projects">Projects</button>
-        <button class="b6" data-target="competitive">Coding</button>
-        <button class="b4" data-target="contact">Contact</button>
-    </nav>
+    <!-- Header & Navigation -->
+    <header class="header">
+        <div class="container navbar">
+            <a href="#home" class="logo" aria-label="Manthan Goel Homepage">
+                <span class="logo-accent">&lt;</span>Manthan<span class="logo-accent">.dev /&gt;</span>
+            </a>
+            <nav class="nav-links">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#journey" class="nav-link">Journey</a>
+                <a href="#academics" class="nav-link">Academics</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#contact" class="nav-link nav-btn">Let's Connect</a>
+            </nav>
+            <button class="menu-toggle" aria-label="Toggle Navigation Menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+    </header>
 
-    <div class="About" id="home">
-        <h4 class="Welcome">Welcome to My Universe</h4>
-        <h1 class="Name1">Manthan Goel</h1>
-
-        <a class="photo" href="#home" aria-label="Profile photo">
-            <img src="images/my-photo.png" alt="Manthan Goel" class="hero-image" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'hero-fallback',textContent:'MG'}))">
-        </a>
-
-        <h3 class="text">Aspiring Software Engineer &middot; Full-Stack &amp; AI</h3>
-        <span class="open-badge"><span class="pulse"></span>Open to internships</span>
-        <p class="about-text">
-            B.Tech Information Technology student at MAIT (SGPA 9.46) who builds end to end: from a
-            deepfake-detection backend to a hyperlocal marketplace with an AI price checker.
-            350+ DSA problems solved in Java. Looking for an internship where I can ship real
-            features, learn fast and contribute from day one.
-        </p>
-        <button class="Explore" data-target="skills">Explore</button>
-        <button class="Contact" data-target="contact">Contact</button>
-        <a class="Contact resume-btn" href="resume.pdf" download>Resume &darr;</a>
+    <!-- Mobile Navigation Overlay -->
+    <div class="nav-overlay">
+        <nav class="overlay-links">
+            <a href="#home" class="overlay-link">Home</a>
+            <a href="#journey" class="overlay-link">Journey</a>
+            <a href="#academics" class="overlay-link">Academics</a>
+            <a href="#skills" class="overlay-link">Skills</a>
+            <a href="#projects" class="overlay-link">Projects</a>
+            <a href="#contact" class="overlay-link">Let's Connect</a>
+        </nav>
     </div>
 
-    <div class="social-links">
-        <a href="https://github.com/phoenixspecss-mait" class="circle-btn" aria-label="GitHub" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
-        <a href="#" id="linkedinLink" class="circle-btn" aria-label="LinkedIn" target="_blank" rel="noopener"><i class="fab fa-linkedin-in"></i></a>
-        <a href="#" id="emailLink" class="circle-btn" aria-label="Email"><i class="fas fa-envelope"></i></a>
-    </div>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container hero-content">
+            <div class="hero-text-box">
+                <div class="location-badge animate-fade-in">
+                    <i class="fa-solid fa-location-dot"></i> Delhi, India
+                </div>
+                <h1 class="hero-title animate-title">
+                    Hi, I'm <span class="gradient-text">Manthan Goel</span>
+                </h1>
+                <h2 class="hero-subtitle">
+                    <span class="typewriter-text" data-words='["Creative App & Web Developer", "I Build Websites", "Data Structures Enthusiast"]'></span>
+                    <span class="typewriter-cursor">|</span>
+                </h2>
+                <p class="hero-description animate-fade-in-delayed">
+                    B.Tech Information Technology student at MAIT. Passionate about crafting immersive, pixel-perfect user experiences and solving complex algorithmic challenges.
+                </p>
+                <div class="hero-cta animate-fade-in-delayed">
+                    <a href="#projects" class="btn btn-primary">View My Work <i class="fa-solid fa-arrow-right"></i></a>
+                    <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                </div>
+                <div class="hero-socials animate-fade-in-delayed">
+                    <a href="https://github.com/Mth27-cyber" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="GitHub Profile (Placeholder)">
+                        <i class="fa-brands fa-github"></i>
+                    </a>
+                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="LinkedIn Profile (Placeholder)">
+                        <i class="fa-brands fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://leetcode.com/u/ManthanGoel27/" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="LeetCode Profile (Placeholder)">
+                        <i class="fa-solid fa-code"></i>
+                    </a>
+                    <a href="https://codeforces.com/profile/ManthanGoel" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Codeforces Profile (Placeholder)">
+                        <i class="fa-solid fa-chart-simple"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="hero-visual-box">
+                <div class="visual-card-wrapper animate-visual">
+                    <div class="visual-card">
+                        <div class="card-header">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+                            <span class="card-title">manthan.js</span>
+                        </div>
+                        <div class="card-body">
+                            <pre><code><span class="code-keyword">const</span> <span class="code-name">developer</span> = {
+    name: <span class="code-string">"Manthan Goel"</span>,
+    role: <span class="code-string">"App & Web Developer"</span>,
+    stack: [<span class="code-string">"JS"</span>, <span class="code-string">"Java"</span>, <span class="code-string">"React"</span>, <span class="code-string">"C++"</span>],
+    passion: <span class="code-string">"Building interactive UI"</span>,
+    solvingProblems: <span class="code-keyword">true</span>
+};
 
-    <div class="About-section" id="about">
-        <h4 class="l1">The Coder Behind The Screen</h4>
-        <h1 class="a">About</h1>
-        <div>
-            <h4 class="b">Full-Stack Developer &amp; Problem Solver based in Delhi, India</h4>
-            <div class="d">
-                <div class="about-card">
-                    <p class="c">
-                        I am currently pursuing my <strong>B.Tech</strong> at the prestigious
-                        <strong>Maharaja Agrasen Institute of Technology (MAIT)</strong>. My journey into
-                        programming accelerated when I completed an intensive Java Development Course at
-                        Coding Blocks, where I mastered Data Structures, Algorithms, and Object-Oriented
-                        Principles. Armed with a strong foundation in core software development and
-                        specialized expertise in <strong>HTML5, CSS3, and JavaScript</strong>, I construct
-                        web experiences that are not only visually striking but also performance-tuned. I
-                        love building responsive design systems, cross-platform apps, and engaging
-                        animations.
-                    </p>
+<span class="code-comment">// Output: Master of loops and DOM tree!</span>
+<span class="code-name">console</span>.log(<span class="code-string">"Ready to create something amazing."</span>);</code></pre>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-
-    <div class="Journey">
-        <!-- Journey / Timeline Section -->
-        <section class="journey-section" id="journey">
-            <div class="container">
-                <h2 class="section-title">My Journey</h2>
-                <p class="section-subtitle">A timeline of my growth, projects, and milestones.</p>
-
-                <div class="timeline">
-
-                    <!-- Semester 3 -->
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <span class="timeline-tag current">Semester 3 &bull; In Progress</span>
-                            <h3>Web Development &amp; Advanced Technologies</h3>
-                            <p class="institution">B.Tech in Information Technology &bull; MAIT</p>
-                            <ul class="milestones-list">
-                                <li><strong>Frontend Stack:</strong> Mastered HTML5, CSS3, JavaScript; actively building applications with <strong>React.js</strong>.</li>
-                                <li><strong>Systems Projects:</strong> Developed core engineering projects in <strong>C++</strong>.</li>
-                                <li><strong>Specializations:</strong> Enrolled in NPTEL certification courses in <strong>Generative AI</strong> and <strong>Digital Marketing</strong>.</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!-- Semester 2 -->
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <span class="timeline-tag">Semester 2</span>
-                            <h3>Competitive Programming &amp; Hackathons</h3>
-                            <p class="institution">SGPA: <strong>9.46</strong> &bull; MAIT</p>
-                            <ul class="milestones-list">
-                                <li><strong>LeetCode Mastery:</strong> Solved <strong>350+ DSA problems</strong> in Java; earned <strong>50 Days</strong>, <strong>100 Days</strong>, and monthly consistency badges (April, July, August).</li>
-                                <li><strong>Competitive Contests:</strong> Solved 2/4 problems in the <em>STACK D DSA Competition</em>.</li>
-                                <li><strong>Hackathon Semifinalist:</strong> Advanced to the semifinals in <em>PROTEX: Hack-2-Win</em> (Protege, IGDTUW).</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!-- Semester 1 -->
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <span class="timeline-tag">Semester 1</span>
-                            <h3>Foundation &amp; Early Exploration</h3>
-                            <p class="institution">SGPA: <strong>9.20</strong> &bull; Maharaja Agrasen Institute of Technology (MAIT)</p>
-                            <ul class="milestones-list">
-                                <li><strong>Core Fundamentals:</strong> Learned C programming alongside college coursework and enrolled in the Java Data Structures &amp; Algorithms course via Coding Blocks.</li>
-                                <li><strong>Hackathon Participation:</strong> Competed in <em>Hack with MAIT 6.0</em> and the <em>AI Agent Hackathon</em>.</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <div id="skills">
-        <h1 class="e">Skills</h1>
-        <h2 class="Tech">Technologies I Work With</h2>
-        <div class="skill-groups">
-            <div class="skill-group"><h3>Languages</h3><div class="chips"><span class="chip">Java</span><span class="chip">C++</span><span class="chip">C</span><span class="chip">Python</span><span class="chip">JavaScript (ES6+)</span></div></div>
-            <div class="skill-group"><h3>Frontend</h3><div class="chips"><span class="chip">HTML5</span><span class="chip">CSS3</span><span class="chip">React.js</span><span class="chip">Responsive UI</span></div></div>
-            <div class="skill-group"><h3>Backend &amp; Data</h3><div class="chips"><span class="chip">FastAPI</span><span class="chip">Celery</span><span class="chip">Redis</span><span class="chip">SQLite</span></div></div>
-            <div class="skill-group"><h3>AI &amp; Tooling</h3><div class="chips"><span class="chip">Gemini API</span><span class="chip">Playwright</span><span class="chip">SentenceTransformers</span><span class="chip">Git &amp; GitHub</span></div></div>
-            <div class="skill-group"><h3>Core CS</h3><div class="chips"><span class="chip">Data Structures &amp; Algorithms</span><span class="chip">OOP</span></div></div>
-        </div>
-    </div>
-
-    <section class="projects-section" id="projects">
-        <h1 class="Projects"><strong>Projects &amp; Showcases</strong></h1>
-        <p class="section-subtitle">Real systems first, then small playable builds.</p>
-
-        <div class="project-grid">
-
-            <a class="project-card featured" href="https://github.com/phoenixspecss-mait/ForensIQ" target="_blank" rel="noopener">
-                <div class="editor-bar"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span><span class="editor-filename">ForensIQ/backend</span></div>
-                <div class="project-body">
-                    <span class="project-badge">Featured</span>
-                    <h3>ForensIQ: Deepfake Detection</h3>
-                    <p>Deepfake detection platform with an async FastAPI backend, Celery workers and Redis for background task processing. Pitched with a full deck.</p>
-                    <span class="project-tags"><span>FastAPI</span><span>Celery</span><span>Redis</span><span>Python</span></span>
-                </div>
-                <span class="project-cta">View on GitHub &rarr;</span>
+        <div class="scroll-indicator">
+            <a href="#journey" aria-label="Scroll to Journey section">
+                <span></span>
             </a>
-
-            <div class="project-card featured">
-                <div class="editor-bar"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span><span class="editor-filename">nukkad-price-checker</span></div>
-                <div class="project-body">
-                    <span class="project-badge">Hackathon</span>
-                    <h3>NUKKAD: Hyperlocal Marketplace</h3>
-                    <p>0%-commission marketplace for local sellers with ONDC integration. AI Price Checker identifies products with Gemini, scrapes Amazon and Flipkart with Playwright, and matches listings semantically.</p>
-                    <span class="project-tags"><span>FastAPI</span><span>Gemini</span><span>Playwright</span><span>SQLite</span></span>
-                </div>
-                <span class="project-cta">Demo available on request</span>
-            </div>
-
-            <a class="project-card" href="games/snake-water-gun/index.html" target="_blank" rel="noopener">
-                <div class="editor-bar">
-                    <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
-                    <span class="editor-filename">snake-water-gun.js</span>
-                </div>
-                <div class="project-body">
-                    <span class="project-emoji">🐍💧🔫</span>
-                    <h3>Snake Water Gun</h3>
-                    <p>A three-way hand game built with vanilla JS — instant rounds, score tracking, and a CPU opponent.</p>
-                    <span class="project-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></span>
-                </div>
-                <span class="project-cta">Play the game &rarr;</span>
-            </a>
-
-            <a class="project-card" href="games/tic-tac-toe/index.html" target="_blank" rel="noopener">
-                <div class="editor-bar">
-                    <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
-                    <span class="editor-filename">tic-tac-toe.js</span>
-                </div>
-                <div class="project-body">
-                    <span class="project-emoji">❌⭕</span>
-                    <h3>Tic Tac Toe</h3>
-                    <p>Local 2-player mode plus an unbeatable CPU powered by a minimax search — try and beat it.</p>
-                    <span class="project-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></span>
-                </div>
-                <span class="project-cta">Play the game &rarr;</span>
-            </a>
-
-            <a class="project-card" href="games/rock-paper-scissors/index.html" target="_blank" rel="noopener">
-                <div class="editor-bar">
-                    <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
-                    <span class="editor-filename">rock-paper-scissors.js</span>
-                </div>
-                <div class="project-body">
-                    <span class="project-emoji">🪨📄✂️</span>
-                    <h3>Rock Paper Scissors</h3>
-                    <p>The classic, rebuilt with a clean UI, animated reveals, and a running scoreboard.</p>
-                    <span class="project-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></span>
-                </div>
-                <span class="project-cta">Play the game &rarr;</span>
-            </a>
-
-            <a class="project-card" href="#home">
-                <div class="editor-bar">
-                    <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
-                    <span class="editor-filename">portfolio.html</span>
-                </div>
-                <div class="project-body">
-                    <span class="project-emoji">&gt;MG&lt;</span>
-                    <h3>This Portfolio</h3>
-                    <p>The site you're on right now — hand-coded with HTML, CSS and JavaScript, no framework.</p>
-                    <span class="project-tags"><span>HTML5</span><span>CSS3</span><span>JavaScript</span></span>
-                </div>
-                <span class="project-cta">You're already here ↑</span>
-            </a>
-
         </div>
     </section>
 
-    <section class="competitive-section" id="competitive">
-        <h1 class="Projects"><strong>Competitive Programming</strong></h1>
-        <p class="section-subtitle">Where I sharpen problem-solving — daily streaks, ratings, and solved counts.</p>
+    <!-- Journey Section -->
+    <section id="journey" class="section journey-section">
+        <div class="container">
+            <div class="section-header scroll-reveal">
+                <h2 class="section-title">My Journey <span class="accent-dot">.</span></h2>
+                <p class="section-subtitle">Academic highlights, competitions, and developmental milestones.</p>
+            </div>
 
-        <div class="cp-grid">
-
-            <!-- LeetCode card -->
-            <div class="cp-card lc-card">
-                <div class="cp-card-header">
-                    <span class="cp-card-title lc-title"><i class="fas fa-code"></i> LeetCode</span>
-                    <span class="cp-handle-badge" id="lcHandleBadge">@your-leetcode-username</span>
+            <div class="timeline-container">
+                <div class="timeline-line">
+                    <div class="timeline-progress"></div>
+                </div>
+                
+                <!-- Timeline Item 1 -->
+                <div class="timeline-item scroll-reveal left">
+                    <div class="timeline-dot"><i class="fa-solid fa-graduation-cap"></i></div>
+                    <div class="timeline-card">
+                        <span class="timeline-date">Semester 1</span>
+                        <h3>Fundamentals & Hackathons</h3>
+                        <p>Dived into computer science foundations and started shaping my programming mind.</p>
+                        <ul class="timeline-list">
+                            <li><i class="fa-regular fa-circle-check"></i> Mastered procedural logic with C programming.</li>
+                            <li><i class="fa-regular fa-circle-check"></i> Began Java Data Structures & Algorithms (DSA) course at Coding Blocks.</li>
+                            <li><i class="fa-regular fa-circle-check"></i> Participated in <strong>Hack with MAIT 6.0</strong>, collaborating on web projects.</li>
+                            <li><i class="fa-regular fa-circle-check"></i> Competed in the <strong>AI Agent Hackathon</strong>, designing intelligent workflows.</li>
+                        </ul>
+                    </div>
                 </div>
 
-                <div class="cp-card-body lc-body">
-                    <div class="donut" id="lcDonut">
-                        <div class="donut-hole">
-                            <span class="donut-total" id="lcTotal">--</span>
-                            <span class="donut-label">solved</span>
+                <!-- Timeline Item 2 -->
+                <div class="timeline-item scroll-reveal right">
+                    <div class="timeline-dot"><i class="fa-solid fa-code-commit"></i></div>
+                    <div class="timeline-card">
+                        <span class="timeline-date">Semester 2</span>
+                        <h3>Problem Solving & Streaks</h3>
+                        <p>Shifted gears to intense problem-solving, competitive programming, and algorithms.</p>
+                        <ul class="timeline-list">
+                            <li><i class="fa-regular fa-circle-check"></i> Solved <strong>350+ DSA problems</strong> on LeetCode using Java.</li>
+                            <li><i class="fa-regular fa-circle-check"></i> Earned <strong>50-day, 100-day</strong>, and monthly badges (April, July, August).</li>
+                            <li><i class="fa-regular fa-circle-check"></i> Solved 2/4 problems in the <strong>STACK D DSA Competition</strong>.</li>
+                            <li><i class="fa-regular fa-circle-check"></i> Reached the Semifinals in <strong>PROTEX: Hack-2-Win</strong> (Protege, IGDTUW).</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 3 -->
+                <div class="timeline-item scroll-reveal left">
+                    <div class="timeline-dot"><i class="fa-solid fa-bolt"></i></div>
+                    <div class="timeline-card current-step">
+                        <span class="timeline-date">Semester 3 (Current)</span>
+                        <h3>Advanced Web & Systems</h3>
+                        <p>Expanding skillset into full-stack development, frameworks, and system design.</p>
+                        <ul class="timeline-list">
+                            <li><i class="fa-solid fa-spinner fa-spin"></i> Refining frontend mastery (HTML5, CSS3, ES6+) and building with React.js.</li>
+                            <li><i class="fa-solid fa-spinner fa-spin"></i> Developing object-oriented system projects in C++.</li>
+                            <li><i class="fa-solid fa-spinner fa-spin"></i> Enrolled in <strong>NPTEL Generative AI</strong> and <strong>Digital Marketing</strong> certifications.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Academics & Certifications Section -->
+    <section id="academics" class="section academics-section">
+        <div class="container">
+            <div class="section-header scroll-reveal">
+                <h2 class="section-title">Academic & Certifications <span class="accent-dot">.</span></h2>
+                <p class="section-subtitle">Demonstrated commitment to excellence in exams, courses, and certifications.</p>
+            </div>
+
+            <div class="academics-grid">
+                <!-- Academic Stats -->
+                <div class="academic-stats scroll-reveal">
+                    <div class="academic-card stats-main">
+                        <div class="institution">
+                            <span class="tag">B.Tech IT</span>
+                            <h3>Maharaja Agrasen Institute of Technology</h3>
+                            <p class="university">Affiliated to GGSIPU, New Delhi</p>
+                        </div>
+                        <div class="gpas-wrapper">
+                            <div class="gpa-box">
+                                <div class="gpa-ring" data-gpa="9.20" style="--gpa-color: var(--primary); --percent: 92;">
+                                    <svg>
+                                        <circle cx="50" cy="50" r="40"></circle>
+                                        <circle cx="50" cy="50" r="40" class="progress-bar"></circle>
+                                    </svg>
+                                    <div class="gpa-value">9.20</div>
+                                </div>
+                                <span class="gpa-label">Semester 1 SGPA</span>
+                            </div>
+                            <div class="gpa-box">
+                                <div class="gpa-ring" data-gpa="9.46" style="--gpa-color: var(--secondary); --percent: 94.6;">
+                                    <svg>
+                                        <circle cx="50" cy="50" r="40"></circle>
+                                        <circle cx="50" cy="50" r="40" class="progress-bar"></circle>
+                                    </svg>
+                                    <div class="gpa-value">9.46</div>
+                                </div>
+                                <span class="gpa-label">Semester 2 SGPA</span>
+                            </div>
+                        </div>
+                        <div class="academic-progress-text">
+                            <span class="status-badge"><span class="pulse-dot"></span> Semester 3 In Progress</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Certifications -->
+                <div class="certifications-list scroll-reveal">
+                    <div class="cert-item">
+                        <div class="cert-icon">
+                            <i class="fa-solid fa-code-branch"></i>
+                        </div>
+                        <div class="cert-info">
+                            <h4>Java Development Course</h4>
+                            <p class="cert-issuer">Coding Blocks</p>
+                            <p class="cert-desc">Mastered Data Structures, Algorithms (DSA), and Object-Oriented Programming (OOP) concepts in Java.</p>
                         </div>
                     </div>
 
-                    <ul class="stat-list">
-                        <li><span class="dot dot-easy"></span><span class="stat-name">Easy</span><span class="stat-value" id="lcEasy">--</span></li>
-                        <li><span class="dot dot-medium"></span><span class="stat-name">Medium</span><span class="stat-value" id="lcMedium">--</span></li>
-                        <li><span class="dot dot-hard"></span><span class="stat-name">Hard</span><span class="stat-value" id="lcHard">--</span></li>
-                    </ul>
-                </div>
+                    <div class="cert-item">
+                        <div class="cert-icon">
+                            <i class="fa-solid fa-brain"></i>
+                        </div>
+                        <div class="cert-info">
+                            <h4>Generative AI Certification</h4>
+                            <p class="cert-issuer">NPTEL</p>
+                            <p class="cert-desc">Explored LLMs, AI agents, prompts, and modern architectures of generative networks.</p>
+                        </div>
+                    </div>
 
-                <a class="dev-board-link lc-link" id="lcProfileLink" href="https://leetcode.com/your-leetcode-username" target="_blank" rel="noopener">Open Developer Board</a>
+                    <div class="cert-item">
+                        <div class="cert-icon">
+                            <i class="fa-solid fa-bullhorn"></i>
+                        </div>
+                        <div class="cert-info">
+                            <h4>Digital Marketing Certification</h4>
+                            <p class="cert-issuer">NPTEL</p>
+                            <p class="cert-desc">Learned optimization techniques, marketing funnels, and data analytics tools.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <!-- Codeforces card -->
-            <div class="cp-card cf-card">
-                <div class="cp-card-header">
-                    <span class="cp-card-title cf-title"><i class="fas fa-chart-column"></i> Codeforces</span>
-                    <span class="cp-handle-badge" id="cfHandleBadge">@your-codeforces-handle</span>
-                </div>
-
-                <div class="cp-card-body cf-body" id="cfMetrics">
-                    <ul class="metric-list">
-                        <li><span class="dot dot-rating"></span><span class="metric-name">Current Rating</span><span class="metric-value" id="cfRank">--</span></li>
-                        <li><span class="dot dot-active"></span><span class="metric-name">Active Days</span><span class="metric-value" id="cfActiveDays">--</span></li>
-                        <li><span class="dot dot-streak"></span><span class="metric-name">Submission Streak</span><span class="metric-value" id="cfStreak">--</span></li>
-                    </ul>
-                </div>
-
-                <a class="dev-board-link cf-link" id="cfProfileLink" href="https://codeforces.com/profile/your-codeforces-handle" target="_blank" rel="noopener">Open Developer Board</a>
-            </div>
-
         </div>
-        
     </section>
 
-    <section class="certifications-section" id="certifications">
-        <h1 class="Projects"><strong>Certifications</strong></h1>
-        <p class="section-subtitle">Courses and credentials I've completed along the way.</p>
-
-        <div class="cert-grid">
-
-            <div class="cert-card">
-                <div class="cert-thumb">
-                    <i class="fas fa-award cert-icon" aria-hidden="true"></i>
-                </div>
-                <div class="cert-info">
-                    <h4>Java Development Course</h4>
-                    <p>Coding Blocks</p>
-                </div>
+    <!-- Skills Section -->
+    <section id="skills" class="section skills-section">
+        <div class="container">
+            <div class="section-header scroll-reveal">
+                <h2 class="section-title">My Tech Stack <span class="accent-dot">.</span></h2>
+                <p class="section-subtitle">Core development skills and programming languages in my arsenal.</p>
             </div>
 
-            <div class="cert-card">
-                <div class="cert-thumb">
-                    <i class="fas fa-award cert-icon" aria-hidden="true"></i>
+            <div class="skills-grid">
+                <!-- Skill Progress Bars -->
+                <div class="skills-bars-container scroll-reveal">
+                    <h3>Frontend Development</h3>
+                    <p class="skills-intro-text">Interactive user interfaces built with responsive design structures.</p>
+
+                    <!-- Skill 1 -->
+                    <div class="skill-bar-wrapper">
+                        <div class="skill-meta">
+                            <span class="skill-name"><i class="fa-brands fa-html5"></i> HTML5</span>
+                            <span class="skill-percent">95%</span>
+                        </div>
+                        <div class="skill-track">
+                            <div class="skill-fill" style="--width: 95%;"></div>
+                        </div>
+                    </div>
+
+                    <!-- Skill 2 -->
+                    <div class="skill-bar-wrapper">
+                        <div class="skill-meta">
+                            <span class="skill-name"><i class="fa-brands fa-css3-alt"></i> CSS3 (Flexbox & Grid)</span>
+                            <span class="skill-percent">95%</span>
+                        </div>
+                        <div class="skill-track">
+                            <div class="skill-fill" style="--width: 95%;"></div>
+                        </div>
+                    </div>
+
+                    <!-- Skill 3 -->
+                    <div class="skill-bar-wrapper">
+                        <div class="skill-meta">
+                            <span class="skill-name"><i class="fa-brands fa-js"></i> JavaScript ES6+ / Web APIs</span>
+                            <span class="skill-percent">95%</span>
+                        </div>
+                        <div class="skill-track">
+                            <div class="skill-fill" style="--width: 95%;"></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="cert-info">
-                    <h4>Generative AI (NPTEL)</h4>
-                    <p>NPTEL</p>
+
+                <!-- Languages & Tools Grid -->
+                <div class="skills-tags-container scroll-reveal">
+                    <h3>Languages & Frameworks</h3>
+                    <p class="skills-intro-text">Technologies I actively use for software engineering and problem-solving.</p>
+                    
+                    <div class="tech-grid">
+                        <div class="tech-card">
+                            <div class="tech-icon java"><i class="fa-brands fa-java"></i></div>
+                            <h4>Java</h4>
+                            <span class="tech-usage">DSA & Algorithms</span>
+                        </div>
+                        <div class="tech-card">
+                            <div class="tech-icon cpp"><i class="fa-solid fa-code"></i></div>
+                            <h4>C++ / C</h4>
+                            <span class="tech-usage">Systems & Logic</span>
+                        </div>
+                        <div class="tech-card">
+                            <div class="tech-icon react"><i class="fa-brands fa-react"></i></div>
+                            <h4>React.js</h4>
+                            <span class="tech-usage">Frontend Web Apps</span>
+                        </div>
+                        <div class="tech-card">
+                            <div class="tech-icon git"><i class="fa-brands fa-git-alt"></i></div>
+                            <h4>Git / GitHub</h4>
+                            <span class="tech-usage">Version Control</span>
+                        </div>
+                    </div>
                 </div>
             </div>
-
-            <div class="cert-card">
-                <div class="cert-thumb">
-                    <i class="fas fa-award cert-icon" aria-hidden="true"></i>
-                </div>
-                <div class="cert-info">
-                    <h4>Digital Marketing (NPTEL)</h4>
-                    <p>NPTEL</p>
-                </div>
-            </div>
-
         </div>
-        
     </section>
 
-    <section id="contact" class="contact-section">
-        <h1 class="Projects"><strong>Get In Touch</strong></h1>
-        <p class="section-subtitle">Hiring interns or want to collaborate? I reply fast.</p>
-        <p class="contact-direct" id="directEmail">Or email <a id="emailText" href="#"></a></p>
+    <!-- Projects Section -->
+    <section id="projects" class="section projects-section">
+        <div class="container">
+            <div class="section-header scroll-reveal">
+                <h2 class="section-title">Featured Projects <span class="accent-dot">.</span></h2>
+                <p class="section-subtitle">A collection of web applications and games built with vanilla technologies.</p>
+            </div>
 
-        <form class="contact-form" id="contactForm" action="https://formsubmit.co/ajax/your-email@example.com" method="POST">
-            <input type="hidden" name="_subject" value="New message from portfolio site">
-            <input type="hidden" name="_template" value="table">
-            <input type="text" name="_honey" style="display:none">
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card scroll-reveal">
+                    <div class="project-image-placeholder">
+                        <i class="fa-solid fa-gun"></i>
+                        <div class="project-tag">Game</div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Snake Water Gun</h3>
+                        <p>An interactive vanilla JavaScript implementation of the classic 3-way hand game, featuring smooth scoreboard tracking and an optimized CPU opponent.</p>
+                        <div class="project-tech-tags">
+                            <span>HTML5</span>
+                            <span>CSS3</span>
+                            <span>JavaScript</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="btn-project" aria-label="View Snake Water Gun demo"><i class="fa-solid fa-arrow-up-right-from-square"></i> Demo</a>
+                            <a href="#" class="btn-project" aria-label="View Snake Water Gun source code"><i class="fa-brands fa-github"></i> Code</a>
+                        </div>
+                    </div>
+                </div>
 
-            <div class="form-row">
-                <label for="name">Name</label>
-                <input type="text" id="name" name="name" placeholder="Your name" required>
+                <!-- Project 2 -->
+                <div class="project-card scroll-reveal">
+                    <div class="project-image-placeholder">
+                        <i class="fa-solid fa-xmark"></i>
+                        <div class="project-tag">AI Game</div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Minimax Tic Tac Toe</h3>
+                        <p>A classic Tic Tac Toe game supporting both local two-player matches and an unbeatable CPU powered by the recursive Minimax decision-tree algorithm.</p>
+                        <div class="project-tech-tags">
+                            <span>Algorithms</span>
+                            <span>JS ES6</span>
+                            <span>Web APIs</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="btn-project" aria-label="View Tic Tac Toe demo"><i class="fa-solid fa-arrow-up-right-from-square"></i> Demo</a>
+                            <a href="#" class="btn-project" aria-label="View Tic Tac Toe source code"><i class="fa-brands fa-github"></i> Code</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card scroll-reveal">
+                    <div class="project-image-placeholder">
+                        <i class="fa-solid fa-hand-scissors"></i>
+                        <div class="project-tag">Game</div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Rock Paper Scissors</h3>
+                        <p>An interactive classic game designed with high-quality animations, CSS visual transitions, animated reveals, and local storage scoreboard persistence.</p>
+                        <div class="project-tech-tags">
+                            <span>CSS Animations</span>
+                            <span>JS ES6</span>
+                            <span>DOM API</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="btn-project" aria-label="View Rock Paper Scissors demo"><i class="fa-solid fa-arrow-up-right-from-square"></i> Demo</a>
+                            <a href="#" class="btn-project" aria-label="View Rock Paper Scissors source code"><i class="fa-brands fa-github"></i> Code</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-card scroll-reveal">
+                    <div class="project-image-placeholder">
+                        <i class="fa-solid fa-user-tie"></i>
+                        <div class="project-tag">Portfolio</div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Creative Portfolio</h3>
+                        <p>This exact website! An impressive, responsive portfolio hand-coded entirely with vanilla HTML, CSS, and JS. Built to demonstrate advanced DOM manipulation and layouts.</p>
+                        <div class="project-tech-tags">
+                            <span>HTML5</span>
+                            <span>CSS Grid/Flex</span>
+                            <span>Canvas API</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#home" class="btn-project" aria-label="Go to top of this portfolio"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live</a>
+                            <a href="#" class="btn-project" aria-label="View portfolio source code"><i class="fa-brands fa-github"></i> Code</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="form-row">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" placeholder="you@example.com" required>
-            </div>
-            <div class="form-row">
-                <label for="message">Message</label>
-                <textarea id="message" name="message" rows="5" placeholder="What's on your mind?" required></textarea>
-            </div>
-            <button type="submit" class="Explore">Send Message</button>
-            <p class="form-note" id="formNote"></p>
-        </form>
+        </div>
     </section>
 
-    <footer class="site-footer">
-        <p>&copy; 2026 Manthan Goel. Built with HTML, CSS &amp; JavaScript.</p>
+    <!-- Competitive Programming & Profiles Section -->
+    <section class="section profiles-section">
+        <div class="container">
+            <div class="section-header scroll-reveal">
+                <h2 class="section-title">Coding Profiles <span class="accent-dot">.</span></h2>
+                <p class="section-subtitle">Where I regularly solve algorithms and challenge myself.</p>
+            </div>
+
+            <div class="profiles-grid">
+                <!-- Leetcode Card -->
+                <a href="https://leetcode.com/u/ManthanGoel27/" target="_blank" rel="noopener noreferrer" class="profile-card scroll-reveal">
+                    <div class="profile-icon leetcode"><i class="fa-solid fa-code"></i></div>
+                    <h3>LeetCode</h3>
+                    <p class="username">@ManthanGoel27</p>
+                    <p class="stats">Solved 350+ Questions • 100-Day Streak Earned</p>
+                    <span class="card-action">View Profile <i class="fa-solid fa-arrow-right"></i></span>
+                </a>
+
+                <!-- Codeforces Card -->
+                <a href="https://codeforces.com/profile/ManthanGoel" target="_blank" rel="noopener noreferrer" class="profile-card scroll-reveal">
+                    <div class="profile-icon codeforces"><i class="fa-solid fa-chart-simple"></i></div>
+                    <h3>Codeforces</h3>
+                    <p class="username">@ManthanGoel</p>
+                    <p class="stats">Participating in divisions to test scale limits</p>
+                    <span class="card-action">View Profile <i class="fa-solid fa-arrow-right"></i></span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact-section">
+        <div class="container">
+            <div class="section-header scroll-reveal">
+                <h2 class="section-title">Let's Work Together <span class="accent-dot">.</span></h2>
+                <p class="section-subtitle">Reach out if you have opportunities, questions, or just want to talk tech.</p>
+            </div>
+
+            <div class="contact-wrapper">
+                <div class="contact-info scroll-reveal">
+                    <h3>Contact Information</h3>
+                    <p>Have an interesting project or a developer role? Let's connect and discuss it.</p>
+                    
+                    <div class="info-list">
+                        <div class="info-item">
+                            <i class="fa-solid fa-envelope"></i>
+                            <div>
+                                <span>Email</span>
+                                <p>your-email@example.com</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <div>
+                                <span>Based In</span>
+                                <p>Delhi, India</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fa-solid fa-briefcase"></i>
+                            <div>
+                                <span>Open For</span>
+                                <p>Internships & Collaborations</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-social-row">
+                        <a href="https://github.com/Mth27-cyber" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="https://leetcode.com/u/ManthanGoel27/" target="_blank" rel="noopener noreferrer" aria-label="LeetCode"><i class="fa-solid fa-code"></i></a>
+                    </div>
+                </div>
+
+                <div class="contact-form-container scroll-reveal">
+                    <!-- FormSubmit integration -->
+                    <form action="https://formsubmit.co/your-email@example.com" method="POST" class="contact-form">
+                        <!-- Avoid FormSubmit captcha page by redirecting or specifying settings if desired -->
+                        <input type="hidden" name="_subject" value="New Portfolio Message from ManthanGoel.dev!">
+                        <input type="hidden" name="_template" value="table">
+                        
+                        <div class="form-group">
+                            <input type="text" name="name" id="form-name" required placeholder=" ">
+                            <label for="form-name">Full Name</label>
+                            <span class="focus-line"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="email" name="email" id="form-email" required placeholder=" ">
+                            <label for="form-email">Email Address</label>
+                            <span class="focus-line"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <textarea name="message" id="form-message" rows="5" required placeholder=" "></textarea>
+                            <label for="form-message">Your Message</label>
+                            <span class="focus-line"></span>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary submit-btn">
+                            <span>Send Message</span>
+                            <i class="fa-solid fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <p>&copy; 2026 Manthan Goel. All rights reserved.</p>
+            <p class="footer-subtext">Built with HTML5, CSS3 (Grid & Flexbox) & vanilla ES6+ JavaScript.</p>
+        </div>
     </footer>
 
+    <!-- Script file -->
     <script src="script.js"></script>
 </body>
 </html>
